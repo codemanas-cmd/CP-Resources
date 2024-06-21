@@ -47,23 +47,3 @@ int32_t main()
     }
     return 0;
 }
-
-
-
-
-
-
-
-
-void solve(){
-    int n=1,m=0;
-    string s;
-    cin>>n;
-    vi v(n);
-    cin>>v;
-    
-}
-
-
-
-    
