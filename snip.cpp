@@ -26,7 +26,52 @@ int moddiv(int a,int b){ return ( modmul(a , modexp(b,MOD-2 )));}
 int modinv(int y){return modexp(y,MOD-2);}
 
 
-//===================== Number-Theory ========================================
+
+//========================================== Combinatorics ============================================================
+
+const int MAXN=100;
+int c[MAXN+1][MAXN+1]; 
+
+void buildComb(){
+    
+    for(int i = 1;i<=MAXN;i++){
+        //nc0=1 and ncn=1
+        c[i][0] = 1;
+        c[i][i]=1;
+    }
+
+    for(int i = 1;i<=MAXN;i++){
+        for(int j = 1;j<=min(MAXN,i);j++){
+            if(i==j)continue;
+            // nck = n-1 c k-1 + n-1 c k
+            c[i][j]= modadd(c[i-1][j-1],c[i-1][j]);
+
+        }
+    }
+}
+
+// find factorial of numbers in o(n)
+int fact [MAXN+1];
+void buildFact(){
+    fact[0]=1;
+    fact[1]=1;
+    for(int i=2;i<=MAXN;i++){
+        fact[i]= modmul(i,fact[i-1]);
+    }
+}
+
+int comb(int n , int r ){
+    if(r==0 or n-r==0) return 1;
+    if(r==1 or n-r==1)return n;
+    if( n < r ) return 0;
+
+    // ncr = n! / (r! * n-r!)
+    int u =  (modmul(fact[n],modinv(fact[n-r])));
+    return (modmul(u,modinv(fact[r])));
+}
+
+
+//================================================= Number-Theory =====================================================
 
 bool isPrime(int n){
     for(int x=2;x*x<=n;x++){
