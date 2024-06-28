@@ -5,6 +5,27 @@ using namespace std;
 #define pb push_back
 
 
+//=================================== Modular Arithmetic ===========================================================
+
+const int MOD = 1e9+7;
+
+
+int modexp(int x , int n){
+  if(n==0) return 1%MOD;
+
+  int u = modexp(x,n/2);
+  u = (u*u)%MOD;
+  if(n&1) u *= x;
+  return u%MOD;
+}
+
+int modadd(int a,int b){ return ( ( (a%MOD) + (b%MOD) ) % MOD );}
+int modsub(int a,int b){ return ( ( (a%MOD) - (b%MOD) + MOD ) % MOD );}
+int modmul(int a,int b){return ( ( (a%MOD) * (b%MOD) ) % MOD );}
+int moddiv(int a,int b){ return ( modmul(a , modexp(b,MOD-2 )));}
+int modinv(int y){return modexp(y,MOD-2);}
+
+
 //===================== Number-Theory ========================================
 
 bool isPrime(int n){
@@ -61,6 +82,8 @@ int GCD (int a,int b){
 
 
 
+
+
 // ==================================== Segment-Tree ===========================================================
 
 vector<int> build(vector<int>&arr,int n){
@@ -99,3 +122,4 @@ int calc(vector<int>&t,int n, int l , int r){
     }
     return sum;
 }
+
