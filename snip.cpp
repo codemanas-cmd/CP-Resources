@@ -19,55 +19,30 @@ int modexp(int x , int n){
   return u%MOD;
 }
 
-int modadd(int a,int b){ return ( ( (a%MOD) + (b%MOD) ) % MOD );}
-int modsub(int a,int b){ return ( ( (a%MOD) - (b%MOD) + MOD ) % MOD );}
-int modmul(int a,int b){return ( ( (a%MOD) * (b%MOD) ) % MOD );}
-int moddiv(int a,int b){ return ( modmul(a , modexp(b,MOD-2 )));}
+void modadd(int &a,int b){ a= ( ( (a%MOD) + (b%MOD) ) % MOD );}
+void modsub(int &a,int b){ a = ( ( (a%MOD) - (b%MOD) + MOD ) % MOD );}
+void modmul(int &a,int b){a = ( ( (a%MOD) * (b%MOD) ) % MOD );}
+void moddiv(int &a,int b){ modmul(a , modexp(b,MOD-2 ));}
 int modinv(int y){return modexp(y,MOD-2);}
 
 
 
 //========================================== Combinatorics ============================================================
 
-const int MAXN=100;
-int c[MAXN+1][MAXN+1]; 
 
-void buildComb(){
-    
-    for(int i = 1;i<=MAXN;i++){
-        //nc0=1 and ncn=1
-        c[i][0] = 1;
-        c[i][i]=1;
-    }
+int choose(int n , int r,int p = MOD ){
+    if (n < r)
+        return 0;
 
-    for(int i = 1;i<=MAXN;i++){
-        for(int j = 1;j<=min(MAXN,i);j++){
-            if(i==j)continue;
-            // nck = n-1 c k-1 + n-1 c k
-            c[i][j]= modadd(c[i-1][j-1],c[i-1][j]);
+    if (r == 0 or n==r)
+        return 1;
+        
+    vector<int> fac(n+1,0);
+    fac[0] = 1;
+    for (int i = 1; i <= n; i++)
+        fac[i] = (fac[i - 1] * i) % p;
 
-        }
-    }
-}
-
-// find factorial of numbers in o(n)
-int fact [MAXN+1];
-void buildFact(){
-    fact[0]=1;
-    fact[1]=1;
-    for(int i=2;i<=MAXN;i++){
-        fact[i]= modmul(i,fact[i-1]);
-    }
-}
-
-int comb(int n , int r ){
-    if(r==0 or n-r==0) return 1;
-    if(r==1 or n-r==1)return n;
-    if( n < r ) return 0;
-
-    // ncr = n! / (r! * n-r!)
-    int u =  (modmul(fact[n],modinv(fact[n-r])));
-    return (modmul(u,modinv(fact[r])));
+    return (fac[n] * modinv(fac[r]) % p * modinv(fac[n - r]) % p) % p;
 }
 
 

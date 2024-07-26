@@ -2,21 +2,49 @@
 using namespace std;
 
 // ================================== Macros ======================================================
-#define int long long
+#define int long long int
+#define uint unsigned long long
 #define vi vector<int>
 #define vb vector<bool>
 #define vs vector<string>
+#define vvi vector<vector<int>>
+#define vvb vector<vector<bool>
+#define vp vector<pair<int,int>>
 #define pb push_back
+#define el(a,v) for(auto& a : v)
+#define fr(i,n) for(int i=0;i<n;i++)
+#define rf(i,n) for(int i = (n)-1;i>=0;i++)
+#define rep(i,a,n) for(int i=0;i<=(a);i++)
 #define sz(v) = (int) v.size()
-#define mx(v) *max_element(v.begin(),v.end())
-#define mn(v) *min_element(v.begin(),v.end())
+#define mxe(v) *max_element(v.begin(),v.end())
+#define mne(v) *min_element(v.begin(),v.end())
+#define srt(v) sort(v.begin(),v.end())
+#define rev(v) sort(v.rbegin(),v.rend())
+#define dbg(var) cout<<#var<<" = "<<var<<nl;
+#define unq(v)  v.resize(distance(v.begin(), unique(v.begin(), v.end())))
+#define nl "\n"
+#define ws " "
 
-int MOD=1e9+7; 
 
-void modadd(int &a , int b) {a=((a%MOD)+(b%MOD))%MOD;}
-void modsub(int &a , int b) {a=((a%MOD)-(b%MOD)+MOD)%MOD;}
-void modmul(int &a , int b) {a=((a%MOD)*(b%MOD))%MOD;}
+const int  MOD=1e9+7; 
+const int INF = INT64_MAX-4;
 
+int modexp(int x , int n){
+    if(n==0) return 1%MOD;
+    int u = modexp(x,n/2);
+    u = (u*u)%MOD;
+    if(n&1) u *= x;
+    return u%MOD;
+}
+
+void modadd(int &a,int b){ a= ( ( (a%MOD) + (b%MOD) ) % MOD );}
+void modsub(int &a,int b){ a = ( ( (a%MOD) - (b%MOD) + MOD ) % MOD );}
+void modmul(int &a,int b){a = ( ( (a%MOD) * (b%MOD) ) % MOD );}
+void moddiv(int &a,int b){ modmul(a , modexp(b,MOD-2 ));}
+int modinv(int y){return modexp(y,MOD-2);}
+
+void yes(){cout<<"YES"<<nl;}
+void no(){cout<<"NO"<<nl;}
 
 // ================================== take ip/op like vector,pairs directly!==================================
 template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
@@ -29,7 +57,7 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve() {
-    
+    int n;cin>>n;
 }
 
 
