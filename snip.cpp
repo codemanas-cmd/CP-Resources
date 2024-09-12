@@ -30,6 +30,15 @@ int modinv(int y){return modexp(y,MOD-2);}
 //========================================== Combinatorics ============================================================
 
 
+const int MXN = 2e5+2;
+int fact[MXN];
+void buildFact(){
+    fact[0]=1;
+    for(int i=1;i<=MXN;i++){
+        fact[i] = (fact[i-1]*i)%MOD;
+    }
+}
+
 int choose(int n , int r,int p = MOD ){
     if (n < r)
         return 0;
@@ -37,12 +46,8 @@ int choose(int n , int r,int p = MOD ){
     if (r == 0 or n==r)
         return 1;
         
-    vector<int> fac(n+1,0);
-    fac[0] = 1;
-    for (int i = 1; i <= n; i++)
-        fac[i] = (fac[i - 1] * i) % p;
 
-    return (fac[n] * modinv(fac[r]) % p * modinv(fac[n - r]) % p) % p;
+    return (fact[n] * modinv(fact[r]) % p * modinv(fact[n - r]) % p) % p;
 }
 
 
@@ -119,7 +124,7 @@ vector<int> build(vector<int>&arr,int n){
 }
 
 void update(vector<int>&t,int n, int idx,int new_val){
-    //idx is index in og array
+    //idx is 0 based index in original array
     int v = idx+n;
     t[v]= new_val;
     v/=2;
@@ -131,6 +136,7 @@ void update(vector<int>&t,int n, int idx,int new_val){
 }
 
 int calc(vector<int>&t,int n, int l , int r){
+    // l and r are 0 based indices in og array
     int vl = l+n;
     int vr = r+n;
     int sum = 0;
