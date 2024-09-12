@@ -11,7 +11,10 @@ using namespace std;
 #define vvb vector<vector<bool>
 #define vp vector<pair<int,int>>
 #define pi pair<int,int>>
-#define pb push_back
+#define vpi vector<pair<int,int>>
+#define PB push_back
+#define F first
+#define S second
 #define el(a,v) for(auto& a : v)
 #define fr(i,n) for(int i=0;i<n;i++)
 #define rf(i,n) for(int i = (n)-1;i>=0;i++)
