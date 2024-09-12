@@ -10,16 +10,19 @@ using namespace std;
 #define vvi vector<vector<int>>
 #define vvb vector<vector<bool>
 #define vp vector<pair<int,int>>
+#define pi pair<int,int>>
 #define pb push_back
 #define el(a,v) for(auto& a : v)
 #define fr(i,n) for(int i=0;i<n;i++)
 #define rf(i,n) for(int i = (n)-1;i>=0;i++)
 #define rep(i,a,n) for(int i=0;i<=(a);i++)
 #define sz(v) = (int) v.size()
+#define all(v) v.begin(),v.end()
+#define rev(v) reverse(v.begin(),v.end())
 #define mxe(v) *max_element(v.begin(),v.end())
 #define mne(v) *min_element(v.begin(),v.end())
 #define srt(v) sort(v.begin(),v.end())
-#define rev(v) sort(v.rbegin(),v.rend())
+#define rsrt(v) sort(v.rbegin(),v.rend())
 #define dbg(var) cout<<#var<<" = "<<var<<nl;
 #define unq(v)  v.resize(distance(v.begin(), unique(v.begin(), v.end())))
 #define nl "\n"
@@ -27,7 +30,7 @@ using namespace std;
 
 
 const int  MOD=1e9+7; 
-const int INF = INT64_MAX-4;
+const int INF = INT32_MAX;
 
 int modexp(int x , int n){
     if(n==0) return 1%MOD;
@@ -57,7 +60,7 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve() {
-    int n;cin>>n;
+    
 }
 
 
