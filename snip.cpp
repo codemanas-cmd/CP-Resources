@@ -149,3 +149,53 @@ int calc(vector<int>&t,int n, int l , int r){
     return sum;
 }
 
+
+//================================================= Binary_Lifting and LCA =====================================================
+
+const int nmax = 2e5;
+const int lgmax = 20;
+int far[lgmax+1][nmax+1];
+int depth[nmax+1];//needed only for finding lca
+bool vis[nmax+1];
+
+void dfs(vvi&adj, int u ){
+    vis[u] = true;
+
+    for(auto&v:adj[u]){
+        if(!vis[v]){
+            far[0][v]=u;
+            depth[v]=depth[u]+1;//for lca
+            dfs(adj,v);
+        }
+        
+    }
+}
+
+void pre_process(){
+    for(int h=1;h<=lgmax;h++)
+        for(int x=1;x<=nmax;x++)
+            far[h][x] = far[h-1][far[h-1][x]];
+}
+
+int LCA(int x , int y){
+    if(depth[x]<depth[y])swap(x,y);
+    int diff = depth[x]-depth[y];
+    if(diff){
+        for(int h = lgmax;h>=0;h--){
+            if((1<<h)<=diff){
+                x = far[h][x];
+                diff-=(1<<h);
+            }
+        }
+    }
+
+    if(x==y)return x;
+
+    for(int h = lgmax;h>=0;h--){
+        if(far[h][x]!=far[h][y]){
+            x = far[h][x];
+            y = far[h][y];
+        }
+    }
+    return far[0][x];
+}
