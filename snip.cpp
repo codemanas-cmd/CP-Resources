@@ -4,7 +4,28 @@ using namespace std;
 #define vi vector<int>
 #define pb push_back
 
+//=================================== Binary Search ===========================================================
+//for minimum value
+int l = ; // l starts from f(l) = 0
+int r = ; // r starts from f(r) = 1
+while(l+1<r){
+    int m = l+(r-l)/2;
+    int val = m;
+    if(check(val)) r = m;
+    else l = m;
+}
+cout << r << nl;
 
+//for maximum value
+int l = ; // l starts from f(l) = 1
+int r = ; // r starts from f(r) = 0
+while(l+1<r){
+    int m = l+(r-l)/2;
+    int val = m;
+    if(check(val)) l = m;
+    else r = m;
+}
+cout << l << nl;
 //=================================== Modular Arithmetic ===========================================================
 
 const int MOD = 1e9+7;
