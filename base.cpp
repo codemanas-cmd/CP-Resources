@@ -4,21 +4,20 @@ using namespace std;
 // ================================== Macros ======================================================
 #define int long long int
 #define uint unsigned long long
+#define ld long double
 #define vi vector<int>
 #define vb vector<bool>
 #define vs vector<string>
 #define vvi vector<vector<int>>
 #define vvb vector<vector<bool>
-#define vp vector<pair<int,int>>
-#define pi pair<int,int>>
+#define pi pair<int,int>
 #define vpi vector<pair<int,int>>
-#define PB push_back
-#define F first
-#define S second
+#define pb push_back
+#define ff first
+#define ss second
 #define el(a,v) for(auto& a : v)
-#define fr(i,n) for(int i=0;i<n;i++)
+#define fr(i,a,n) for(int i=(a);i<n;i++)
 #define rf(i,n) for(int i = (n)-1;i>=0;i++)
-#define rep(i,a,n) for(int i=0;i<=(a);i++)
 #define sz(v) = (int) v.size()
 #define all(v) v.begin(),v.end()
 #define rev(v) reverse(v.begin(),v.end())
@@ -70,6 +69,8 @@ void solve() {
 int32_t main()
 {
  
+//freopen("input.txt", "r", stdin);
+//freopen("output.txt", "w", stdout)
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
 
