@@ -7,10 +7,11 @@ using namespace std;
 #endif
 #define int long long
 #define all(v) v.begin(),v.end()
+#define acm(v) accumulate(v.begin(), v.end(),0ll)
 #define sz(v) (int)v.size()
 const int mod = 1e9+7;
 const int inf  = 1e18;
-
+const int def =  - 1e18;
 
 
 int32_t main () {
