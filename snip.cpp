@@ -1,7 +1,7 @@
 #include "bits/stdc++.h"
 using namespace std;
+#define int long long
 
-#define vi vector<int>
 #define pb push_back
 
 //=================================== Binary Search ===========================================================
@@ -26,11 +26,9 @@ while(l+1<r){
     else r = m;
 }
 cout << l << nl;
-//=================================== Modular Arithmetic ===========================================================
+//=================================== modular Arithmetic ===========================================================
 
-const int MOD = 1e9+7;
-
-
+int MOD = $0;
 int modexp(int x , int n){
   if(n==0) return 1%MOD;
 
@@ -40,36 +38,31 @@ int modexp(int x , int n){
   return u%MOD;
 }
 
-void modadd(int &a,int b){ a= ( ( (a%MOD) + (b%MOD) ) % MOD );}
-void modsub(int &a,int b){ a = ( ( (a%MOD) - (b%MOD) + MOD ) % MOD );}
-void modmul(int &a,int b){a = ( ( (a%MOD) * (b%MOD) ) % MOD );}
-void moddiv(int &a,int b){ modmul(a , modexp(b,MOD-2 ));}
+int modadd(int a,int b){ return ( ( (a%MOD) + (b%MOD) ) % MOD );}
+int modsub(int a,int b){ return ( ( (a%MOD) - (b%MOD) + MOD ) % MOD );}
+int modmul(int a,int b){return ( ( (a%MOD) * (b%MOD) ) % MOD );}
+int moddiv(int a,int b){ return ( modmul(a , modexp(b,MOD-2 )));}
 int modinv(int y){return modexp(y,MOD-2);}
 
 
 
 //========================================== Combinatorics ============================================================
 
-
-const int MXN = 2e5+2;
-int fact[MXN];
-void buildFact(){
-    fact[0]=1;
-    for(int i=1;i<=MXN;i++){
-        fact[i] = (fact[i-1]*i)%MOD;
+const int mxn = $0;
+int fac[mxn];
+void buildfac(){
+    fac[0] = 0;
+    fac[1] = 1;
+    for(int i=1;i<=mxn;i++){
+        fac[i] = (fac[i-1]*i)%MOD;
     }
-}
+};
 
-int choose(int n , int r,int p = MOD ){
-    if (n < r)
-        return 0;
-
-    if (r == 0 or n==r)
-        return 1;
-        
-
-    return (fact[n] * modinv(fact[r]) % p * modinv(fact[n - r]) % p) % p;
-}
+int ncr(int n , int r,int p = MOD ){
+    if (n < r) return 0;
+    if (r == 0 or n==r) return 1;
+    return (fac[n] * modinv(fac[r]) % p * modinv(fac[n - r]) % p) % p;
+};
 
 
 //================================================= Number-Theory =====================================================
@@ -82,20 +75,20 @@ bool isPrime(int n){
 }
 //check if the number is prime
 
-//prime factorization
-vi getFactors(int n){
-    vi f;
+//prime facorization
+vector<int> getfacors(int n){
+    vector<int> f;
     for(int x=2;x*x<=n;x++){
         while(n%x==0){
-            f.pb(x);
+            f.push_back(x);
             n /= x;
         }
     }
-    if(n>1) f.pb(n);
+    if(n>1) f.push_back(n);
     return f;
 }
-int sz = 1e6+5;
-bool primeSieve[1000005];
+const int sz = 1e6+5;
+bool primeSieve[sz];
 
 //build sieve
 void buildSieve(){
@@ -124,9 +117,6 @@ int GCD (int a,int b){
     }
     return b;
 }
-
-
-
 
 
 
@@ -177,13 +167,13 @@ const int nmax = 2e5;
 const int lgmax = 20;
 int far[lgmax+1][nmax+1];
 int depth[nmax+1];//needed only for finding lca
-bool vis[nmax+1];
+bool vector<int>s[nmax+1];
 
-void dfs(vvi&adj, int u ){
-    vis[u] = true;
+void dfs(vvector<int>&adj, int u ){
+    vector<int>s[u] = true;
 
     for(auto&v:adj[u]){
-        if(!vis[v]){
+        if(!vector<int>s[v]){
             far[0][v]=u;
             depth[v]=depth[u]+1;//for lca
             dfs(adj,v);
@@ -220,3 +210,57 @@ int LCA(int x , int y){
     }
     return far[0][x];
 }
+
+
+// ======================= pbds ==========================
+/*
+#include <ext/pb_ds/assoc_container.hpp> // Common file
+#include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
+using namespace __gnu_pbds;
+
+typedef tree<
+    int,
+    null_type,
+    less<int>,
+    rb_tree_tag,
+    tree_order_statistics_node_update>
+    ordered_set;
+*/
+
+// ========================= Inputs ==================================
+
+//undirected graph
+
+/*
+int n,m;
+cin>>n>>m;
+
+vector<vector<int>>adj(n+1);
+for(int i=0;i<m;i++){
+    int a,b;
+    cin>>a>>b;
+    adj[a].push_back(b);
+    adj[b].push_back(a);
+}
+*/
+
+//directed graph
+
+/*
+int n,m;
+cin>>n>>m;
+
+vector<vector<int>>adj(n+1);
+for(int i=0;i<m;i++){
+    int a,b;
+    cin>>a>>b;
+    adj[a].push_back(b);
+}
+*/
+
+//Tree 
+/*
+
+*/
+
+
