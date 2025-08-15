@@ -5,6 +5,7 @@ using namespace std;
 #else
 #define debug(...) 8
 #endif
+#define ll long long
 #define endl '\n'
 #define all(v) v.begin(),v.end()
 #define sz(v) (int)v.size()
