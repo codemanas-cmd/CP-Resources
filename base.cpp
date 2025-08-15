@@ -5,13 +5,13 @@ using namespace std;
 #else
 #define debug(...) 8
 #endif
-#define int long long
+#define endl '\n'
 #define all(v) v.begin(),v.end()
-#define acm(v) accumulate(v.begin(), v.end(),0ll)
 #define sz(v) (int)v.size()
-const int mod = 1e9+7;
-const int inf  = 1e18;
-const int def =  - 1e18;
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+int rand(int a, int b) { return uniform_int_distribution<int>(a, b)(rng); }
+const int M = 1e9+7;
 
 
 int32_t main () {
