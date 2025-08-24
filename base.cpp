@@ -9,6 +9,8 @@ using namespace std;
 #define endl '\n'
 #define all(v) v.begin(),v.end()
 #define sz(v) (int)v.size()
+void yes(){cout<<"YES\n";};
+void no(){cout<<"NO\n";}
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 int rand(int a, int b) { return uniform_int_distribution<int>(a, b)(rng); }
@@ -25,7 +27,7 @@ int32_t main () {
     };
     
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         solve();
     }
